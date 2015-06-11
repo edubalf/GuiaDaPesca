@@ -49,6 +49,22 @@ namespace GuiaDaPesca.Domain.Model
 
         }
 
+        /// <summary>
+        /// Altera a data
+        /// </summary>
+        public void AlterarData(DateTime data)
+        {
+
+        }
+
+        /// <summary>
+        /// Altera o comentario
+        /// </summary>
+        public void AlterarComentario(Comentario comentario)
+        {
+
+        }
+
         #endregion
     }
 }

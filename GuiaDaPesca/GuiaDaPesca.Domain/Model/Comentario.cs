@@ -21,5 +21,17 @@ namespace GuiaDaPesca.Domain.Model
         }
 
         #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Altera a descricao
+        /// </summary>
+        public void AlterarDescricao(string descricao)
+        {
+
+        }
+
+        #endregion
     }
 }

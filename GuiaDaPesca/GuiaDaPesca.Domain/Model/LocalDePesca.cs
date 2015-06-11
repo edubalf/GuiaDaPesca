@@ -3,11 +3,12 @@ using System.Collections.Generic;
 
 namespace GuiaDaPesca.Domain.Model
 {
-    public class LocaisDePesca
+    public class LocalDePesca
     {
         #region Propriets
 
         public Guid Id { get; private set; }
+        public string Nome { get; set; }
         public bool Aprovado { get; private set; }
         public virtual Localizacao Localizacao { get; private set; }
         public virtual Usuario UsuarioCadastro { get; private set; }
@@ -19,7 +20,7 @@ namespace GuiaDaPesca.Domain.Model
 
         #region Constructor
 
-        public LocaisDePesca(string descricao, Localizacao localizacao, Usuario usuarioCadastro, TipoLocalDePesca tipoLocalDePesca)
+        public LocalDePesca(string nome, Localizacao localizacao, Usuario usuarioCadastro, TipoLocalDePesca tipoLocalDePesca)
         {
 
         }
@@ -72,6 +73,22 @@ namespace GuiaDaPesca.Domain.Model
         /// Atualiza um relato de pesca
         /// </summary>
         public void AtualizarRelatoDePesca(RelatoDePesca relatoDePesca)
+        {
+
+        }
+
+        /// <summary>
+        /// Troca o tipo do local de pesca
+        /// </summary>
+        public void TrocarTipoLocalDePesca(TipoLocalDePesca tipoLocalDePesca)
+        {
+
+        }
+
+        /// <summary>
+        /// Troca o nome
+        /// </summary>
+        public void TrocarNome(string nome)
         {
 
         }

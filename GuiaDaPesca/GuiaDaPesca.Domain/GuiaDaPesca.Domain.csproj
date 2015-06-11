@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Comentario.cs" />
-    <Compile Include="Model\LocaisDePesca.cs" />
+    <Compile Include="Model\LocalDePesca.cs" />
     <Compile Include="Model\Localizacao.cs" />
     <Compile Include="Model\Peixe.cs" />
     <Compile Include="Model\PeixeCapturado.cs" />
