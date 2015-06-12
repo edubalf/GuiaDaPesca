@@ -8,7 +8,7 @@ namespace GuiaDaPesca.Domain.Model
         #region Propriets
 
         public Guid Id { get; private set; }
-        public string Login { get; private set; }
+        public string Email { get; private set; }
         public string Senha { get; private set; }
 
         #endregion
@@ -23,7 +23,7 @@ namespace GuiaDaPesca.Domain.Model
             ValidarSenha(senha, senhaConfirmacao);
 
             Id = Guid.NewGuid();
-            Login = login;
+            Email = login;
             Senha = senha;
         }
 

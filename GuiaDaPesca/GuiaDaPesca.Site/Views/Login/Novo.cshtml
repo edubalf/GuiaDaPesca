@@ -1,0 +1,52 @@
+﻿@model GuiaDaPesca.Site.ViewModels.UsuarioViewModel
+
+@{
+    ViewBag.Title = "Novo";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Login</h3>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Salvar", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Email, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @type = "email", @class = "form-control", @placeholder = "Seu email" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Senha, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(x => x.Senha, new { htmlAttributes = new { @type = "password", @class = "form-control", @placeholder = "Senha" } })
+                        @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.SenhaConfirmacao, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(x => x.SenhaConfirmacao, new { htmlAttributes = new { @type = "password", @class = "form-control", @placeholder = "Confirmação da Senha" } })
+                        @Html.ValidationMessageFor(model => model.SenhaConfirmacao, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Criar" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

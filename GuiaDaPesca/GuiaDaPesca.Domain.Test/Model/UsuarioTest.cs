@@ -12,7 +12,7 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             Usuario usuario = new Usuario("edubalf", "123mudar", "123mudar");
 
-            Assert.AreEqual(usuario.Login, "edubalf");
+            Assert.AreEqual(usuario.Email, "edubalf");
             Assert.AreEqual(usuario.Senha, "123mudar");
         }
 

@@ -27,7 +27,7 @@ namespace GuiaDaPesca.Domain.Test.Model
             Comentario comentario = new Comentario("Ola mundo", new Usuario("edubalf", "123456", "123456"));
 
             Assert.AreEqual(comentario.Descricao, "Ola mundo");
-            Assert.AreEqual(comentario.Usuario.Login, "edubalf");
+            Assert.AreEqual(comentario.Usuario.Email, "edubalf");
         }
 
         [TestMethod]

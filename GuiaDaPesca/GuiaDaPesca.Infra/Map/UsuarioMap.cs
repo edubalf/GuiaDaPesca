@@ -12,7 +12,7 @@ namespace GuiaDaPesca.Infra.Map
     {
         public UsuarioMap()
         {
-            Property(x => x.Login)
+            Property(x => x.Email)
                 .HasMaxLength(20)
                 .IsRequired();
 
