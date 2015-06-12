@@ -22,6 +22,8 @@ namespace GuiaDaPesca.Domain.Model
 
         #region Constructor
 
+        protected LocalDePesca() { }
+
         public LocalDePesca(string nome, Localizacao localizacao, Usuario usuarioCadastro, TipoLocalDePesca tipoLocalDePesca)
         {
             ValidarNome(nome);

@@ -16,6 +16,8 @@ namespace GuiaDaPesca.Domain.Model
 
         #region Constructor
 
+        protected PeixeCapturado() { }
+
         public PeixeCapturado(Peixe peixe, double peso, double tamanho)
         {
             ValidarPeso(peso);

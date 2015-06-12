@@ -40,6 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\Repositories\IPeixeCapturadoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IUsuarioRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITipoLocalDePescaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IRelatoDePescaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPeixeRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ILocalizacaoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IComentarioRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ILocalDePescaContext.cs" />
+    <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Model\Comentario.cs" />
     <Compile Include="Model\Erro\Erro.cs" />
     <Compile Include="Model\LocalDePesca.cs" />

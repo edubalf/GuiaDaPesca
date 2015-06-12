@@ -15,6 +15,8 @@ namespace GuiaDaPesca.Domain.Model
 
         #region Constructor
 
+        protected Localizacao() { }
+
         public Localizacao(double latitude, double longitude)
         {
             Assertion.NotEquals(latitude, Convert.ToDouble(0), "A latitude não pode ser 0");

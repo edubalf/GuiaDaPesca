@@ -13,6 +13,8 @@ namespace GuiaDaPesca.Domain.Model
 
         #region Constructor
 
+        protected TipoLocalDePesca() { }
+
         public TipoLocalDePesca(Comentario comentario)
         {
             Id = Guid.NewGuid();

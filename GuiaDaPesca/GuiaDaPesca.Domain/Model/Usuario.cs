@@ -15,6 +15,8 @@ namespace GuiaDaPesca.Domain.Model
 
         #region Constructor
 
+        protected Usuario() { }
+
         public Usuario(string login, string senha, string senhaConfirmacao)
         {
             ValidarLogin(login);
