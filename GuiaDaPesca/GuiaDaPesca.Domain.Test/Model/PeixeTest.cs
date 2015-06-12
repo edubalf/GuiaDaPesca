@@ -31,23 +31,6 @@ namespace GuiaDaPesca.Domain.Test.Model
         }
 
         [TestMethod]
-        public void AtualizarComentario()
-        {
-            Peixe peixe = new Peixe("Pacu");
-
-            Comentario comentario = new Comentario("Peixe grande", new Usuario("edubalf", "123mudar", "123mudar"));
-
-            peixe.IncluirComentario(comentario);
-
-            comentario.AlterarDescricao("Peixe Bravo");
-
-            peixe.AtualizarComentario(comentario);
-
-            Assert.IsTrue(peixe.comentarios.Count > 0);
-            Assert.Equals(peixe.comentarios.First().Descricao, "Peixe Bravo");
-        }
-
-        [TestMethod]
         public void RemoverComentario()
         {
             Peixe peixe = new Peixe("Pacu");
@@ -59,6 +42,21 @@ namespace GuiaDaPesca.Domain.Test.Model
             peixe.RemoverComentario(comentario);
 
             Assert.IsTrue(peixe.comentarios.Count == 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
+        public void RemoverComentarioPassandoNovoComentario()
+        {
+            Peixe peixe = new Peixe("Pacu");
+
+            Comentario comentario = new Comentario("Peixe grande", new Usuario("edubalf", "123mudar", "123mudar"));
+
+            peixe.IncluirComentario(comentario);
+
+            Comentario comentarioParaRemover = new Comentario("Teste", new Usuario("edubalf", "123mudar", "123mudar"));
+
+            peixe.RemoverComentario(comentarioParaRemover);
         }
     }
 }

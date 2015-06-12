@@ -3,11 +3,11 @@ using System.Text.RegularExpressions;
 
 namespace GuiaDePesca.Resourse.Validation
 {
-    public class AssertionConcern
+    public class Assertion
     {
         #region Contructors
 
-        protected AssertionConcern() { }
+        protected Assertion() { }
 
         #endregion
 
@@ -71,6 +71,14 @@ namespace GuiaDePesca.Resourse.Validation
         public static void NotNull(object object1, string message)
         {
             if (object1 == null)
+            {
+                throw new InvalidOperationException(message);
+            }
+        }
+
+        public static void Null(object object1, string message)
+        {
+            if (object1 != null)
             {
                 throw new InvalidOperationException(message);
             }

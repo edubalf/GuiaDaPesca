@@ -25,7 +25,7 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             localizacao = new Localizacao(-23.488193, -46.607975);
             usuario = new Usuario("edubalf", "123mudar", "123mudar");
-            tipoLocalDePesca = new TipoLocalDePesca("Rio");
+            tipoLocalDePesca = new TipoLocalDePesca(new Comentario("rio", usuario));
             localDePesca = new LocalDePesca("Atibainha", localizacao, usuario, tipoLocalDePesca);
             comentario = new Comentario("Teste", usuario);
             relatoDePesca = new RelatoDePesca(comentario, DateTime.Now);
@@ -34,11 +34,11 @@ namespace GuiaDaPesca.Domain.Test.Model
         [TestMethod]
         public void PreenchimentoPropriedades()
         {
-            Assert.Equals(localDePesca.Aprovado, false);
-            Assert.Equals(localDePesca.Nome, "Atibainha");
-            Assert.Equals(localDePesca.Localizacao, localizacao);
-            Assert.Equals(localDePesca.TipoLocalDePesca, tipoLocalDePesca);
-            Assert.Equals(localDePesca.UsuarioCadastro, usuario);
+            Assert.AreEqual(localDePesca.Aprovado, false);
+            Assert.AreEqual(localDePesca.Nome, "Atibainha");
+            Assert.AreEqual(localDePesca.Localizacao, localizacao);
+            Assert.AreEqual(localDePesca.TipoLocalDePesca, tipoLocalDePesca);
+            Assert.AreEqual(localDePesca.UsuarioCadastro, usuario);
         }
 
         [TestMethod]
@@ -46,23 +46,8 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             localDePesca.AdicionarComentario(comentario);
 
-            Assert.Equals(localDePesca.Comentarios.Count, 1);
-            Assert.Equals(localDePesca.Comentarios.First(), comentario);
-        }
-
-        [TestMethod]
-        public void AtualizarComentario()
-        {
-            localDePesca.AdicionarComentario(comentario);
-
-            Assert.Equals(localDePesca.Comentarios.First(), comentario);
-
-            comentario.AlterarDescricao("Ola Mundo");
-
-            localDePesca.AtualizarComentario(comentario);
-
-            Assert.Equals(localDePesca.Comentarios.Count, 1);
-            Assert.Equals(localDePesca.Comentarios.First(), comentario);
+            Assert.AreEqual(localDePesca.Comentarios.Count, 1);
+            Assert.AreEqual(localDePesca.Comentarios.First(), comentario);
         }
 
         [TestMethod]
@@ -70,11 +55,11 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             localDePesca.AdicionarComentario(comentario);
 
-            Assert.Equals(localDePesca.Comentarios.Count, 1);
+            Assert.AreEqual(localDePesca.Comentarios.Count, 1);
 
             localDePesca.RemoverComentario(comentario);
 
-            Assert.Equals(localDePesca.Comentarios.Count, 0);
+            Assert.AreEqual(localDePesca.Comentarios.Count, 0);
         }
 
         [TestMethod]
@@ -82,25 +67,8 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             localDePesca.AdicionarRelatoDePesca(relatoDePesca);
 
-            Assert.Equals(localDePesca.RelatosDePesca.Count, 1);
-            Assert.Equals(localDePesca.RelatosDePesca.First(), relatoDePesca);
-        }
-
-        [TestMethod]
-        public void AtualizarRelatoDePesca()
-        {
-            localDePesca.AdicionarRelatoDePesca(relatoDePesca);
-
-            comentario.AlterarDescricao("Outro peixe");
-
-            Assert.Equals(localDePesca.RelatosDePesca.First(), relatoDePesca);
-
-            relatoDePesca.AlterarComentario(comentario);
-
-            localDePesca.AtualizarRelatoDePesca(relatoDePesca);
-
-            Assert.Equals(localDePesca.RelatosDePesca.Count, 1);
-            Assert.Equals(localDePesca.RelatosDePesca.First(), relatoDePesca);
+            Assert.AreEqual(localDePesca.RelatosDePesca.Count, 1);
+            Assert.AreEqual(localDePesca.RelatosDePesca.First(), relatoDePesca);
         }
 
         [TestMethod]
@@ -108,11 +76,11 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             localDePesca.AdicionarRelatoDePesca(relatoDePesca);
 
-            Assert.Equals(localDePesca.RelatosDePesca.Count, 1);
+            Assert.AreEqual(localDePesca.RelatosDePesca.Count, 1);
 
             localDePesca.RemoverRelatoDePesca(relatoDePesca);
 
-            Assert.Equals(localDePesca.RelatosDePesca.Count, 0);
+            Assert.AreEqual(localDePesca.RelatosDePesca.Count, 0);
         }
 
         [TestMethod]
@@ -120,17 +88,17 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             localDePesca.TrocarNome("Represa de mairipora");
 
-            Assert.Equals(localDePesca.Nome, "Represa de mairipora");
+            Assert.AreEqual(localDePesca.Nome, "Represa de mairipora");
         }
 
         [TestMethod]
         public void TrocarTipoLocalDePesca()
         {
-            TipoLocalDePesca tipoLocalDePescaInterno = new TipoLocalDePesca("Pesqueiro");
+            TipoLocalDePesca tipoLocalDePescaInterno = new TipoLocalDePesca(new Comentario("Rio", usuario));
 
             localDePesca.TrocarTipoLocalDePesca(tipoLocalDePescaInterno);
 
-            Assert.Equals(localDePesca.TipoLocalDePesca, tipoLocalDePescaInterno);
+            Assert.AreEqual(localDePesca.TipoLocalDePesca, tipoLocalDePescaInterno);
         }
     }
 }

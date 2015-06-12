@@ -7,27 +7,16 @@ namespace GuiaDaPesca.Domain.Model
         #region Propriets
 
         public Guid Id { get; private set; }
-        public string Descricao { get; private set; }
+        public Comentario Comentario { get; private set; }
 
         #endregion
 
         #region Constructor
 
-        public TipoLocalDePesca(string descricao)
+        public TipoLocalDePesca(Comentario comentario)
         {
-
-        }
-
-        #endregion
-
-        #region Methods
-
-        /// <summary>
-        /// Altera a descricao
-        /// </summary>
-        public void AlterarDescricao(string descricao)
-        {
-
+            Id = Guid.NewGuid();
+            Comentario = comentario;
         }
 
         #endregion

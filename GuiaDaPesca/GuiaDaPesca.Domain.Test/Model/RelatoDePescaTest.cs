@@ -27,9 +27,8 @@ namespace GuiaDaPesca.Domain.Test.Model
         [TestMethod]
         public void Construtor()
         {
-            Assert.Equals(new DateTime(2015, 6, 9), relatoDePesca.Data);
-            Assert.Equals(relatoDePesca.Comentario, comentario);
-            Assert.Equals(relatoDePesca.PeixesCapturados, new List<PeixeCapturado>());
+            Assert.AreEqual(new DateTime(2015, 6, 9), relatoDePesca.Data);
+            Assert.AreEqual(relatoDePesca.Comentario, comentario);
         }
 
         [TestMethod]
@@ -37,8 +36,8 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             relatoDePesca.AdicionarPeixeCapturado(peixeCapturado);
 
-            Assert.Equals(1, relatoDePesca.PeixesCapturados.Count);
-            Assert.Equals(relatoDePesca.PeixesCapturados.First(), peixeCapturado);
+            Assert.AreEqual(1, relatoDePesca.PeixesCapturados.Count);
+            Assert.AreEqual(relatoDePesca.PeixesCapturados.First(), peixeCapturado);
         }
 
         [TestMethod]
@@ -50,8 +49,8 @@ namespace GuiaDaPesca.Domain.Test.Model
 
             relatoDePesca.AtualizaPeixeCapturado(peixeCapturado);
 
-            Assert.Equals(1, relatoDePesca.PeixesCapturados.Count);
-            Assert.Equals(relatoDePesca.PeixesCapturados.First(), peixeCapturado);
+            Assert.AreEqual(1, relatoDePesca.PeixesCapturados.Count);
+            Assert.AreEqual(relatoDePesca.PeixesCapturados.First(), peixeCapturado);
         }
 
         [TestMethod]
@@ -59,11 +58,11 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             relatoDePesca.AdicionarPeixeCapturado(peixeCapturado);
 
-            Assert.Equals(1, relatoDePesca.PeixesCapturados.Count);
+            Assert.AreEqual(1, relatoDePesca.PeixesCapturados.Count);
 
             relatoDePesca.RemoverPeixeCapturado(peixeCapturado);
 
-            Assert.Equals(0, relatoDePesca.PeixesCapturados.Count);
+            Assert.AreEqual(0, relatoDePesca.PeixesCapturados.Count);
         }
 
         [TestMethod]
@@ -71,7 +70,7 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             relatoDePesca.AlterarData(new DateTime(2015, 4, 1));
 
-            Assert.Equals(new DateTime(2015, 4, 1), relatoDePesca.Data);
+            Assert.AreEqual(new DateTime(2015, 4, 1), relatoDePesca.Data);
         }
 
         [TestMethod]

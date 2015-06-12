@@ -12,8 +12,8 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             Usuario usuario = new Usuario("edubalf", "123mudar", "123mudar");
 
-            Assert.Equals(usuario.Login, "edubalf");
-            Assert.Equals(usuario.Senha, "123mudar");
+            Assert.AreEqual(usuario.Login, "edubalf");
+            Assert.AreEqual(usuario.Senha, "123mudar");
         }
 
         [TestMethod]
@@ -55,7 +55,7 @@ namespace GuiaDaPesca.Domain.Test.Model
 
             usuario.AlterarSenha("123mudar", "1234mudar", "1234mudar");
 
-            Assert.Equals("1234mudar", usuario.Senha);
+            Assert.AreEqual("1234mudar", usuario.Senha);
         }
 
         [TestMethod]

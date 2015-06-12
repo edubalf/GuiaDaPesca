@@ -1,5 +1,7 @@
-﻿using System;
+﻿using GuiaDePesca.Resourse.Validation;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GuiaDaPesca.Domain.Model
 {
@@ -15,9 +17,14 @@ namespace GuiaDaPesca.Domain.Model
 
         #region Constructor
 
+        protected Peixe() { }
+
         public Peixe(string nome)
         {
+            ValidarNome(nome);
 
+            Nome = nome;
+            comentarios = new List<Comentario>();
         }
 
         #endregion
@@ -29,7 +36,10 @@ namespace GuiaDaPesca.Domain.Model
         /// </summary>
         public void IncluirComentario(Comentario comentario)
         {
+            ValidarComentario(comentario);
+            Assertion.Null(ObterComentario(comentario), "O comentario já existe.");
 
+            comentarios.Add(comentario);
         }
 
         /// <summary>
@@ -37,15 +47,33 @@ namespace GuiaDaPesca.Domain.Model
         /// </summary>
         public void RemoverComentario(Comentario comentario)
         {
+            Comentario comentarioRemover;
 
+            ValidarComentario(comentario);
+            comentarioRemover = ObterComentario(comentario);
+            Assertion.NotNull(comentarioRemover, "O comentario não existe.");
+
+            comentarios.Remove(ObterComentario(comentario));
         }
 
-        /// <summary>
-        /// Atualiza um comentario
-        /// </summary>
-        public void AtualizarComentario(Comentario comentario)
-        {
+        #endregion
 
+        #region Private Methods
+
+        private void ValidarNome(string nome)
+        {
+            Assertion.NotEmpty(nome, "O nome é obrigatório.");
+            Assertion.Length(nome, 100, "O nome deve ter menos que 100 caracteres.");
+        }
+
+        private void ValidarComentario(Comentario comentario)
+        {
+            Assertion.NotNull(comentario, "O comentario não pode ser null");
+        }
+
+        private Comentario ObterComentario(Comentario comentario)
+        {
+            return comentarios.Where(x => x.Id == comentario.Id).FirstOrDefault();
         }
 
         #endregion

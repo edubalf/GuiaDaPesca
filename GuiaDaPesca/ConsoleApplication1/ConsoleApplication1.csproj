@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{65AD81D9-D4FD-4B7B-96F6-7649F0F4A5C8}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{234E7534-CF77-4072-9496-8D14FC4CD004}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GuiaDaPesca.Domain</RootNamespace>
-    <AssemblyName>GuiaDaPesca.Domain</AssemblyName>
+    <RootNamespace>ConsoleApplication1</RootNamespace>
+    <AssemblyName>ConsoleApplication1</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,21 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Comentario.cs" />
-    <Compile Include="Model\Erro\Erro.cs" />
-    <Compile Include="Model\LocalDePesca.cs" />
-    <Compile Include="Model\Localizacao.cs" />
-    <Compile Include="Model\Peixe.cs" />
-    <Compile Include="Model\PeixeCapturado.cs" />
-    <Compile Include="Model\RelatoDePesca.cs" />
-    <Compile Include="Model\TipoLocalDePesca.cs" />
-    <Compile Include="Model\Usuario.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GuiaDePesca.Resourse\GuiaDePesca.Resourse.csproj">
-      <Project>{470a4def-a7b4-41cf-83ef-daf92aab903e}</Project>
-      <Name>GuiaDePesca.Resourse</Name>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GuiaDaPesca.Domain\GuiaDaPesca.Domain.csproj">
+      <Project>{65ad81d9-d4fd-4b7b-96f6-7649f0f4a5c8}</Project>
+      <Name>GuiaDaPesca.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

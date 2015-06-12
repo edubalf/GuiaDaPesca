@@ -1,5 +1,7 @@
-﻿using System;
+﻿using GuiaDePesca.Resourse.Validation;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GuiaDaPesca.Domain.Model
 {
@@ -13,8 +15,8 @@ namespace GuiaDaPesca.Domain.Model
         public virtual Localizacao Localizacao { get; private set; }
         public virtual Usuario UsuarioCadastro { get; private set; }
         public virtual TipoLocalDePesca TipoLocalDePesca { get; private set; }
-        public virtual List<Comentario> Comentarios { get; private set; }
-        public virtual List<RelatoDePesca> RelatosDePesca { get; private set; }
+        public virtual List<Comentario> Comentarios { get; private set; } = new List<Comentario>();
+        public virtual List<RelatoDePesca> RelatosDePesca { get; private set; } = new List<RelatoDePesca>();
 
         #endregion
 
@@ -22,7 +24,17 @@ namespace GuiaDaPesca.Domain.Model
 
         public LocalDePesca(string nome, Localizacao localizacao, Usuario usuarioCadastro, TipoLocalDePesca tipoLocalDePesca)
         {
+            ValidarNome(nome);
+            ValidarTipoLocalDePesca(tipoLocalDePesca);
+            Assertion.NotNull(localizacao, "A localização é obrigatória.");
+            Assertion.NotNull(usuarioCadastro, "O usuário é obrigatório.");
 
+            Id = Guid.NewGuid();
+            Nome = nome;
+            Aprovado = false;
+            Localizacao = localizacao;
+            UsuarioCadastro = usuarioCadastro;
+            TipoLocalDePesca = tipoLocalDePesca;
         }
 
         #endregion
@@ -34,7 +46,10 @@ namespace GuiaDaPesca.Domain.Model
         /// </summary>
         public void AdicionarComentario(Comentario comentario)
         {
+            ValidarComentario(comentario);
+            Assertion.True(ObterComentario(comentario) == null, "O comentario já foi adicionado.");
 
+            Comentarios.Add(comentario);
         }
 
         /// <summary>
@@ -42,15 +57,13 @@ namespace GuiaDaPesca.Domain.Model
         /// </summary>
         public void RemoverComentario(Comentario comentario)
         {
+            Comentario comentarioRemover;
 
-        }
+            ValidarComentario(comentario);
+            comentarioRemover = ObterComentario(comentario);
+            Assertion.True(comentarioRemover != null, "O comentario não pertence a esse local de pesca.");
 
-        /// <summary>
-        /// Atualiza um comentario
-        /// </summary>
-        public void AtualizarComentario(Comentario comentario)
-        {
-
+            Comentarios.Remove(comentarioRemover);
         }
 
         /// <summary>
@@ -58,7 +71,10 @@ namespace GuiaDaPesca.Domain.Model
         /// </summary>
         public void AdicionarRelatoDePesca(RelatoDePesca relatoDePesca)
         {
+            ValidarRelatoDePesca(relatoDePesca);
+            Assertion.True(ObterRelatoDePesca(relatoDePesca) == null, "O relator de pesca já foi adicionado.");
 
+            RelatosDePesca.Add(relatoDePesca);
         }
 
         /// <summary>
@@ -66,15 +82,13 @@ namespace GuiaDaPesca.Domain.Model
         /// </summary>
         public void RemoverRelatoDePesca(RelatoDePesca relatoDePesca)
         {
+            RelatoDePesca relatoDePescaRemover;
 
-        }
+            ValidarRelatoDePesca(relatoDePesca);
+            relatoDePescaRemover = ObterRelatoDePesca(relatoDePesca);
+            Assertion.True(relatoDePescaRemover != null, "O relato de pesca não pertence a esse local de pesca.");
 
-        /// <summary>
-        /// Atualiza um relato de pesca
-        /// </summary>
-        public void AtualizarRelatoDePesca(RelatoDePesca relatoDePesca)
-        {
-
+            RelatosDePesca.Remove(relatoDePescaRemover);
         }
 
         /// <summary>
@@ -82,7 +96,9 @@ namespace GuiaDaPesca.Domain.Model
         /// </summary>
         public void TrocarTipoLocalDePesca(TipoLocalDePesca tipoLocalDePesca)
         {
+            ValidarTipoLocalDePesca(tipoLocalDePesca);
 
+            TipoLocalDePesca = tipoLocalDePesca;
         }
 
         /// <summary>
@@ -90,7 +106,44 @@ namespace GuiaDaPesca.Domain.Model
         /// </summary>
         public void TrocarNome(string nome)
         {
+            ValidarNome(nome);
 
+            Nome = nome;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void ValidarNome(string nome)
+        {
+            Assertion.NotEmpty(nome, "O nome é obrigatório.");
+            Assertion.Length(nome, 5, 200, "O nome deve ter de 5 à 200 caracteres.");
+        }
+
+        private void ValidarTipoLocalDePesca(TipoLocalDePesca tipoLocalDePesca)
+        {
+            Assertion.NotNull(tipoLocalDePesca, "O tipo do local de pesca é obrigatório.");
+        }
+
+        private void ValidarComentario(Comentario comentario)
+        {
+            Assertion.NotNull(comentario, "O comentario é obrigatório.");
+        }
+
+        private void ValidarRelatoDePesca(RelatoDePesca relatoDePesca)
+        {
+            Assertion.NotNull(relatoDePesca, "O relato de pesca é obrigatório.");
+        }
+
+        private Comentario ObterComentario(Comentario comentario)
+        {
+            return Comentarios.Where(x => x.Id == comentario.Id).FirstOrDefault();
+        }
+
+        private RelatoDePesca ObterRelatoDePesca(RelatoDePesca relatoDePesca)
+        {
+            return RelatosDePesca.Where(x => x.Id == relatoDePesca.Id).FirstOrDefault();
         }
 
         #endregion

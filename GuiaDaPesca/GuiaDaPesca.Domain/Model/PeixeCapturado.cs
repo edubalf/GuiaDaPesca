@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuiaDePesca.Resourse.Validation;
+using System;
 
 namespace GuiaDaPesca.Domain.Model
 {
@@ -17,7 +18,13 @@ namespace GuiaDaPesca.Domain.Model
 
         public PeixeCapturado(Peixe peixe, double peso, double tamanho)
         {
+            ValidarPeso(peso);
+            ValidarTamanho(tamanho);
 
+            Id = Guid.NewGuid();
+            Peixe = peixe;
+            Peso = peso;
+            Tamanho = tamanho;
         }
 
         #endregion
@@ -29,7 +36,7 @@ namespace GuiaDaPesca.Domain.Model
         /// </summary>
         public void AlterarPeixe(Peixe peixe)
         {
-
+            Peixe = peixe;
         }
 
         /// <summary>
@@ -37,7 +44,9 @@ namespace GuiaDaPesca.Domain.Model
         /// </summary>
         public void AlterarTamanho(double tamanho)
         {
+            ValidarTamanho(tamanho);
 
+            Tamanho = tamanho;
         }
 
         /// <summary>
@@ -45,7 +54,23 @@ namespace GuiaDaPesca.Domain.Model
         /// </summary>
         public void AlterarPeso(double peso)
         {
+            ValidarPeso(peso);
 
+            Peso = peso;
+        }
+
+        #endregion
+
+        #region Privete Methods
+
+        private void ValidarPeso(double peso)
+        {
+            Assertion.True(peso >= 0, "O peso deve ser positivo");
+        }
+
+        private void ValidarTamanho(double tamanho)
+        {
+            Assertion.True(tamanho >= 0, "O tamanho deve ser positivo");
         }
 
         #endregion

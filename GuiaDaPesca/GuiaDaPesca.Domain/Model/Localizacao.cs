@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuiaDePesca.Resourse.Validation;
+using System;
 
 namespace GuiaDaPesca.Domain.Model
 {
@@ -16,7 +17,12 @@ namespace GuiaDaPesca.Domain.Model
 
         public Localizacao(double latitude, double longitude)
         {
+            Assertion.NotEquals(latitude, Convert.ToDouble(0), "A latitude não pode ser 0");
+            Assertion.NotEquals(longitude, Convert.ToDouble(0), "A longitude não pode ser 0");
 
+            Id = Guid.NewGuid();
+            Latitude = latitude;
+            Longitude = longitude;
         }
 
         #endregion
