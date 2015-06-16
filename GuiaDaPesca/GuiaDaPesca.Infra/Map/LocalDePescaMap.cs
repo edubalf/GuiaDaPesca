@@ -1,24 +1,39 @@
-﻿using GuiaDaPesca.Domain.Model;
-using System.Data.Entity.ModelConfiguration;
+﻿using FluentNHibernate.Mapping;
+using GuiaDaPesca.Domain.Model;
 
 namespace GuiaDaPesca.Infra.Map
 {
-    public class LocalDePescaMap : EntityTypeConfiguration<LocalDePesca>
+    public class LocalDePescaMap : ClassMap<LocalDePesca>
     {
         public LocalDePescaMap()
         {
-            Property(x => x.Nome)
-                .HasMaxLength(200)
-                .IsRequired();
+            Id(x => x.Id)
+                .GeneratedBy.GuidComb();
 
-            Property(x => x.Aprovado)
-                .IsRequired();
+            Map(x => x.Aprovado)
+                .Not.Nullable();
 
-            HasRequired(x => x.Localizacao);
+            Map(x => x.Nome)
+                .Not.Nullable()
+                .Length(100);
 
-            HasRequired(x => x.UsuarioCadastro);
+            References(x => x.Localizacao)
+                .Not.Nullable()
+                .LazyLoad();
 
-            HasRequired(x => x.TipoLocalDePesca);
+            References(x => x.UsuarioCadastro)
+                .Not.Nullable()
+                .LazyLoad();
+
+            References(x => x.TipoLocalDePesca)
+                .Not.Nullable()
+                .LazyLoad();
+
+            HasManyToMany(x => x.Comentarios)
+                .LazyLoad();
+
+            HasManyToMany(x => x.RelatosDePesca)
+                .LazyLoad();
         }
     }
 }

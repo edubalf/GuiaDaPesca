@@ -1,13 +1,26 @@
-﻿using GuiaDaPesca.Domain.Model;
-using System.Data.Entity.ModelConfiguration;
+﻿using FluentNHibernate.Mapping;
+using GuiaDaPesca.Domain.Model;
 
 namespace GuiaDaPesca.Infra.Map
 {
-    public class PeixeCapturadoMap : EntityTypeConfiguration<PeixeCapturado>
+    public class PeixeCapturadoMap : ClassMap<PeixeCapturado>
     {
         public PeixeCapturadoMap()
         {
-            HasRequired(x => x.Peixe);
+            Id(x => x.Id)
+                .GeneratedBy.GuidComb();
+
+            Map(x => x.Peso)
+                .Nullable();
+
+            Map(x => x.Tamanho)
+                .Nullable();
+
+            References(x => x.Peixe)
+                .LazyLoad();
+
+            HasManyToMany(x => x.RelatosDePesca)
+                .LazyLoad();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using GuiaDePesca.Resourse.Validation;
 using System;
+using System.Collections.Generic;
 
 namespace GuiaDaPesca.Domain.Model
 {
@@ -7,10 +8,12 @@ namespace GuiaDaPesca.Domain.Model
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
-        public double Peso { get; private set; }
-        public double Tamanho { get; private set; }
-        public virtual Peixe Peixe { get; private set; }
+        public virtual Guid Id { get; protected set; }
+        public virtual double Peso { get; protected set; }
+        public virtual double Tamanho { get; protected set; }
+        public virtual Peixe Peixe { get; protected set; }
+
+        public virtual IList<RelatoDePesca> RelatosDePesca { get; protected set; }
 
         #endregion
 
@@ -36,7 +39,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Troca o peixe
         /// </summary>
-        public void AlterarPeixe(Peixe peixe)
+        public virtual void AlterarPeixe(Peixe peixe)
         {
             Peixe = peixe;
         }
@@ -44,7 +47,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Altera o tamanho
         /// </summary>
-        public void AlterarTamanho(double tamanho)
+        public virtual void AlterarTamanho(double tamanho)
         {
             ValidarTamanho(tamanho);
 
@@ -54,7 +57,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Altera o peso
         /// </summary>
-        public void AlterarPeso(double peso)
+        public virtual void AlterarPeso(double peso)
         {
             ValidarPeso(peso);
 

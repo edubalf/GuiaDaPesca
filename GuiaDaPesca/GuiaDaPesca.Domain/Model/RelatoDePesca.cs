@@ -9,10 +9,12 @@ namespace GuiaDaPesca.Domain.Model
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
-        public DateTime Data { get; private set; }
-        public virtual Comentario Comentario { get; private set; }
-        public virtual List<PeixeCapturado> PeixesCapturados { get; private set; } = new List<PeixeCapturado>();
+        public virtual Guid Id { get; protected set; }
+        public virtual DateTime Data { get; protected set; }
+        public virtual Comentario Comentario { get; protected set; }
+        public virtual IList<PeixeCapturado> PeixesCapturados { get; protected set; } = new List<PeixeCapturado>();
+
+        public virtual IList<LocalDePesca> LocaisDePesca { get; protected set; }
 
         #endregion
 
@@ -37,7 +39,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Adiciona um peixe capturado
         /// </summary>
-        public void AdicionarPeixeCapturado(PeixeCapturado peixeCapturado)
+        public virtual void AdicionarPeixeCapturado(PeixeCapturado peixeCapturado)
         {
             ValidarPeixeCapturadoNaoCadastrado(peixeCapturado);
 
@@ -47,7 +49,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Atualiza um peixe capturado
         /// </summary>
-        public void AtualizaPeixeCapturado(PeixeCapturado peixeCapturado)
+        public virtual void AtualizaPeixeCapturado(PeixeCapturado peixeCapturado)
         {
             RemoverPeixeCapturado(peixeCapturado);
 
@@ -57,7 +59,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Remove um peixe capturado
         /// </summary>
-        public void RemoverPeixeCapturado(PeixeCapturado peixeCapturado)
+        public virtual void RemoverPeixeCapturado(PeixeCapturado peixeCapturado)
         {
             ValidarPeixeCapturadoCadastrado(peixeCapturado);
 
@@ -67,7 +69,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Altera a data
         /// </summary>
-        public void AlterarData(DateTime data)
+        public virtual void AlterarData(DateTime data)
         {
             ValidarData(data);
 

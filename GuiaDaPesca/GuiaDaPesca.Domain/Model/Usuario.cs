@@ -1,5 +1,6 @@
 ﻿using GuiaDePesca.Resourse.Validation;
 using System;
+using System.Collections.Generic;
 
 namespace GuiaDaPesca.Domain.Model
 {
@@ -7,9 +8,12 @@ namespace GuiaDaPesca.Domain.Model
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
-        public string Email { get; private set; }
-        public string Senha { get; private set; }
+        public virtual Guid Id { get; protected set; }
+        public virtual string Email { get; protected set; }
+        public virtual string Senha { get; protected set; }
+
+        public virtual IList<Comentario> Comentarios { get; protected set; }
+        public virtual IList<LocalDePesca> LocalisDePesca { get; protected set; }
 
         #endregion
 
@@ -17,13 +21,13 @@ namespace GuiaDaPesca.Domain.Model
 
         protected Usuario() { }
 
-        public Usuario(string login, string senha, string senhaConfirmacao)
+        public Usuario(string email, string senha, string senhaConfirmacao)
         {
-            ValidarLogin(login);
+            ValidarEmail(email);
             ValidarSenha(senha, senhaConfirmacao);
 
             Id = Guid.NewGuid();
-            Email = login;
+            Email = email;
             Senha = senha;
         }
 
@@ -34,7 +38,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Altara a senha do usuario
         /// </summary>
-        public void AlterarSenha(string senhaAntiga, string senhaNova, string senhaNovaConfirmacao)
+        public virtual void AlterarSenha(string senhaAntiga, string senhaNova, string senhaNovaConfirmacao)
         {
             ValidarAlteracaoSenha(senhaAntiga, senhaNova, senhaNovaConfirmacao);
 
@@ -45,10 +49,10 @@ namespace GuiaDaPesca.Domain.Model
 
         #region Privete Methods
 
-        private void ValidarLogin(string login)
+        public static void ValidarEmail(string email)
         {
-            Assertion.NotEmpty(login, "O login é obrigatório.");
-            Assertion.Length(login, 6, 20, "O login deve ter de 5 à 20 caracteres.");
+            Assertion.NotEmpty(email, "O email é obrigatório.");
+            Assertion.Length(email, 6, 20, "O login deve ter de 5 à 20 caracteres.");
         }
 
         private void ValidarSenha(string senha, string senhaConfirmacao)

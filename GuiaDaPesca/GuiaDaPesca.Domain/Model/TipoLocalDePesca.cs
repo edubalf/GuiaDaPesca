@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GuiaDaPesca.Domain.Model
 {
@@ -6,8 +7,10 @@ namespace GuiaDaPesca.Domain.Model
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
-        public Comentario Comentario { get; private set; }
+        public virtual Guid Id { get; protected set; }
+        public virtual Comentario Comentario { get; protected set; }
+
+        public virtual IList<LocalDePesca> LocaisDePesca { get; protected set; }
 
         #endregion
 

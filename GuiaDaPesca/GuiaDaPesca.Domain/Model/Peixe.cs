@@ -9,9 +9,11 @@ namespace GuiaDaPesca.Domain.Model
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
-        public string Nome { get; private set; }
-        public virtual List<Comentario> comentarios { get; private set; }
+        public virtual Guid Id { get; protected set; }
+        public virtual string Nome { get; protected set; }
+        public virtual IList<Comentario> Comentarios { get; protected set; }
+
+        public virtual IList<PeixeCapturado> PeixesCapturados { get; protected set; }
 
         #endregion
 
@@ -24,7 +26,7 @@ namespace GuiaDaPesca.Domain.Model
             ValidarNome(nome);
 
             Nome = nome;
-            comentarios = new List<Comentario>();
+            Comentarios = new List<Comentario>();
         }
 
         #endregion
@@ -34,18 +36,18 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Inclui um novo comentario
         /// </summary>
-        public void IncluirComentario(Comentario comentario)
+        public virtual void IncluirComentario(Comentario comentario)
         {
             ValidarComentario(comentario);
             Assertion.Null(ObterComentario(comentario), "O comentario já existe.");
 
-            comentarios.Add(comentario);
+            Comentarios.Add(comentario);
         }
 
         /// <summary>
         /// Remover um comentario de acordo com o Id
         /// </summary>
-        public void RemoverComentario(Comentario comentario)
+        public virtual void RemoverComentario(Comentario comentario)
         {
             Comentario comentarioRemover;
 
@@ -53,7 +55,7 @@ namespace GuiaDaPesca.Domain.Model
             comentarioRemover = ObterComentario(comentario);
             Assertion.NotNull(comentarioRemover, "O comentario não existe.");
 
-            comentarios.Remove(ObterComentario(comentario));
+            Comentarios.Remove(ObterComentario(comentario));
         }
 
         #endregion
@@ -73,7 +75,7 @@ namespace GuiaDaPesca.Domain.Model
 
         private Comentario ObterComentario(Comentario comentario)
         {
-            return comentarios.Where(x => x.Id == comentario.Id).FirstOrDefault();
+            return Comentarios.Where(x => x.Id == comentario.Id).FirstOrDefault();
         }
 
         #endregion

@@ -6,9 +6,10 @@ namespace GuiaDaPesca.Site.ViewModels
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
-        public double Latitude { get; private set; }
-        public double Longitude { get; private set; }
+        public Guid Id { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string Endereco { get; set; }
 
         #endregion
     }

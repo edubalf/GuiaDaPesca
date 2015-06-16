@@ -7,14 +7,14 @@ namespace GuiaDaPesca.Site.ViewModels
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; set; }
         public string Nome { get; set; }
-        public bool Aprovado { get; private set; }
-        public virtual LocalizacaoViewModel Localizacao { get; private set; }
-        public virtual UsuarioViewModel UsuarioCadastro { get; private set; }
-        public virtual TipoLocalDePescaViewModel TipoLocalDePesca { get; private set; }
-        public virtual List<ComentarioViewModel> Comentarios { get; private set; } = new List<ComentarioViewModel>();
-        public virtual List<RelatoDePescaViewModel> RelatosDePesca { get; private set; } = new List<RelatoDePescaViewModel>();
+        public bool Aprovado { get; set; }
+        public virtual LocalizacaoViewModel Localizacao { get; set; }
+        public virtual UsuarioViewModel UsuarioCadastro { get; set; }
+        public virtual TipoLocalDePescaViewModel TipoLocalDePesca { get; set; }
+        public virtual List<ComentarioViewModel> Comentarios { get; set; } = new List<ComentarioViewModel>();
+        public virtual List<RelatoDePescaViewModel> RelatosDePesca { get; set; } = new List<RelatoDePescaViewModel>();
 
         #endregion
     }

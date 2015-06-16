@@ -1,5 +1,6 @@
 ﻿using GuiaDePesca.Resourse.Validation;
 using System;
+using System.Collections.Generic;
 
 namespace GuiaDaPesca.Domain.Model
 {
@@ -7,10 +8,11 @@ namespace GuiaDaPesca.Domain.Model
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
-        public double Latitude { get; private set; }
-        public double Longitude { get; private set; }
+        public virtual Guid Id { get; protected set; }
+        public virtual double Latitude { get; protected set; }
+        public virtual double Longitude { get; protected set; }
 
+        public virtual LocalDePesca LocalDePesca { get; protected set; }
         #endregion
 
         #region Constructor

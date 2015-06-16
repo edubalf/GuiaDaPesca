@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace GuiaDePesca.Resourse.Validation
@@ -55,6 +56,14 @@ namespace GuiaDePesca.Resourse.Validation
         public static void NotEmpty(string stringValue, string message)
         {
             if (stringValue == null || stringValue.Trim().Length == 0)
+            {
+                throw new InvalidOperationException(message);
+            }
+        }
+
+        public static void NotEmpty<T>(List<T> Value , string message)
+        {
+            if (Value == null || Value.Count == 0)
             {
                 throw new InvalidOperationException(message);
             }

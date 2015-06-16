@@ -9,14 +9,14 @@ namespace GuiaDaPesca.Domain.Model
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
-        public string Nome { get; set; }
-        public bool Aprovado { get; private set; }
-        public virtual Localizacao Localizacao { get; private set; }
-        public virtual Usuario UsuarioCadastro { get; private set; }
-        public virtual TipoLocalDePesca TipoLocalDePesca { get; private set; }
-        public virtual List<Comentario> Comentarios { get; private set; } = new List<Comentario>();
-        public virtual List<RelatoDePesca> RelatosDePesca { get; private set; } = new List<RelatoDePesca>();
+        public virtual Guid Id { get; protected set; }
+        public virtual string Nome { get; protected set; }
+        public virtual bool Aprovado { get; protected set; }
+        public virtual Localizacao Localizacao { get; protected set; }
+        public virtual Usuario UsuarioCadastro { get; protected set; }
+        public virtual TipoLocalDePesca TipoLocalDePesca { get; protected set; }
+        public virtual List<Comentario> Comentarios { get; protected set; } = new List<Comentario>();
+        public virtual List<RelatoDePesca> RelatosDePesca { get; protected set; } = new List<RelatoDePesca>();
 
         #endregion
 
@@ -46,7 +46,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Adiciona um comentario
         /// </summary>
-        public void AdicionarComentario(Comentario comentario)
+        public virtual void AdicionarComentario(Comentario comentario)
         {
             ValidarComentario(comentario);
             Assertion.True(ObterComentario(comentario) == null, "O comentario já foi adicionado.");
@@ -57,7 +57,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Remove um comentario
         /// </summary>
-        public void RemoverComentario(Comentario comentario)
+        public virtual void RemoverComentario(Comentario comentario)
         {
             Comentario comentarioRemover;
 
@@ -71,7 +71,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Adiciona um relato de pesca
         /// </summary>
-        public void AdicionarRelatoDePesca(RelatoDePesca relatoDePesca)
+        public virtual void AdicionarRelatoDePesca(RelatoDePesca relatoDePesca)
         {
             ValidarRelatoDePesca(relatoDePesca);
             Assertion.True(ObterRelatoDePesca(relatoDePesca) == null, "O relator de pesca já foi adicionado.");
@@ -82,7 +82,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Remove um relato de pesca
         /// </summary>
-        public void RemoverRelatoDePesca(RelatoDePesca relatoDePesca)
+        public virtual void RemoverRelatoDePesca(RelatoDePesca relatoDePesca)
         {
             RelatoDePesca relatoDePescaRemover;
 
@@ -96,7 +96,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Troca o tipo do local de pesca
         /// </summary>
-        public void TrocarTipoLocalDePesca(TipoLocalDePesca tipoLocalDePesca)
+        public virtual void TrocarTipoLocalDePesca(TipoLocalDePesca tipoLocalDePesca)
         {
             ValidarTipoLocalDePesca(tipoLocalDePesca);
 
@@ -106,7 +106,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Troca o nome
         /// </summary>
-        public void TrocarNome(string nome)
+        public virtual void TrocarNome(string nome)
         {
             ValidarNome(nome);
 

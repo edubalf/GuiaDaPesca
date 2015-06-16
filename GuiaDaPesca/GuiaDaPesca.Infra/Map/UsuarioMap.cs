@@ -1,25 +1,27 @@
-﻿using GuiaDaPesca.Domain.Model;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentNHibernate.Mapping;
+using GuiaDaPesca.Domain.Model;
 
 namespace GuiaDaPesca.Infra.Map
 {
-    public class UsuarioMap : EntityTypeConfiguration<Usuario>
+    public class UsuarioMap : ClassMap<Usuario>
     {
         public UsuarioMap()
         {
-            Property(x => x.Email)
-                .HasMaxLength(20)
-                .IsRequired();
+            Id(x => x.Id)
+                .GeneratedBy.GuidComb();
 
-            Property(x => x.Senha)
-                .IsFixedLength()
-                .HasMaxLength(32)
-                .IsRequired();
+            Map(x => x.Email)
+                .Unique()
+                .Not.Nullable()
+                .Length(100);
+
+            Map(x => x.Senha)
+                .Not.Nullable()
+                .Length(100);
+
+            HasMany(x => x.Comentarios);
+
+            HasMany(x => x.LocalisDePesca);
         }
     }
 }

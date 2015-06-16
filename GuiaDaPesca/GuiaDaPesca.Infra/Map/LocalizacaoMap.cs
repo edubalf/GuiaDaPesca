@@ -1,17 +1,23 @@
-﻿using GuiaDaPesca.Domain.Model;
-using System.Data.Entity.ModelConfiguration;
+﻿using FluentNHibernate.Mapping;
+using GuiaDaPesca.Domain.Model;
 
 namespace GuiaDaPesca.Infra.Map
 {
-    public class LocalizacaoMap : EntityTypeConfiguration<Localizacao>
+    public class LocalizacaoMap : ClassMap<Localizacao>
     {
         public LocalizacaoMap()
         {
-            Property(x => x.Latitude)
-                .IsRequired();
+            Id(x => x.Id)
+                .GeneratedBy.GuidComb();
 
-            Property(x => x.Longitude)
-                .IsRequired();
+            Map(x => x.Latitude)
+                .Not.Nullable();
+
+            Map(x => x.Longitude)
+                .Not.Nullable();
+
+            References(x => x.LocalDePesca)
+                .LazyLoad();
         }
     }
 }

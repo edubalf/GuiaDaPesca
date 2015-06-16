@@ -27,7 +27,7 @@ namespace GuiaDaPesca.Domain.Test.Model
             Peixe peixe = new Peixe("Pacu");
             peixe.IncluirComentario(new Comentario("Peixe grande", new Usuario("edubalf", "123mudar", "123mudar")));
 
-            Assert.IsTrue(peixe.comentarios.Count > 0);
+            Assert.IsTrue(peixe.Comentarios.Count > 0);
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace GuiaDaPesca.Domain.Test.Model
 
             peixe.RemoverComentario(comentario);
 
-            Assert.IsTrue(peixe.comentarios.Count == 0);
+            Assert.IsTrue(peixe.Comentarios.Count == 0);
         }
 
         [TestMethod]

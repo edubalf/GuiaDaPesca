@@ -1,5 +1,6 @@
 ﻿using GuiaDePesca.Resourse.Validation;
 using System;
+using System.Collections.Generic;
 
 namespace GuiaDaPesca.Domain.Model
 {
@@ -7,10 +8,15 @@ namespace GuiaDaPesca.Domain.Model
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
-        public string Descricao { get; private set; }
-        public DateTime DataCriacao { get; private set; }
-        public virtual Usuario Usuario { get; private set; }
+        public virtual Guid Id { get; protected set; }
+        public virtual string Descricao { get; protected set; }
+        public virtual DateTime DataCriacao { get; protected set; }
+        public virtual Usuario Usuario { get; protected set; }
+
+        public virtual IList<Peixe> Peixes { get; protected set; }
+        public virtual IList<RelatoDePesca> RelatosDePesca { get; protected set; }
+        public virtual IList<TipoLocalDePesca> TiposLocalDePesca { get; protected set; }
+        public virtual IList<LocalDePesca> LocaisDePesca { get; protected set; }
 
         #endregion
 
@@ -36,7 +42,7 @@ namespace GuiaDaPesca.Domain.Model
         /// <summary>
         /// Altera a descricao
         /// </summary>
-        public void AlterarDescricao(string descricao)
+        public virtual void AlterarDescricao(string descricao)
         {
             ValidarDescricao(descricao);
 

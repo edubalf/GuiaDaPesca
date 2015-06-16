@@ -1,8 +1,10 @@
 ﻿using GuiaDaPesca.Domain.Interfaces.Repositories;
 using GuiaDaPesca.Infra.Context;
+using GuiaDePesca.Resourse.Exceptions;
+using NHibernate;
+using NHibernate.Linq;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 
 namespace GuiaDaPesca.Infra.Repositories
@@ -11,32 +13,99 @@ namespace GuiaDaPesca.Infra.Repositories
     {
         protected GuiaDaPescaContext Db = new GuiaDaPescaContext();
 
-        public void Adicionar(TEntity obj)
+        public void AdicionarPadrao(TEntity obj)
         {
-            Db.Set<TEntity>().Add(obj);
-            Db.SaveChanges();
+            using (ISession session = GuiaDaPescaContext.AbrirSessao())
+            {
+                using (ITransaction tr = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Save(obj);
+                        tr.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        TratarException.NHibernateException(ex, tr);
+                    }
+                }
+            }
         }
 
-        public TEntity Obter(int id)
+        public void AtualizarPadrao(TEntity obj)
         {
-            return Db.Set<TEntity>().Find(id);
+            using (ISession session = GuiaDaPescaContext.AbrirSessao())
+            {
+                using (ITransaction tr = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Update(obj);
+                        tr.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        TratarException.NHibernateException(ex, tr);
+                    }
+                }
+            }
         }
 
-        public IEnumerable<TEntity> Buscar()
+        public void RemoverPadrao(TEntity obj)
         {
-            return Db.Set<TEntity>().ToList();
+            using (ISession session = GuiaDaPescaContext.AbrirSessao())
+            {
+                using (ITransaction tr = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Delete(obj);
+                        tr.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        TratarException.NHibernateException(ex, tr);
+                    }
+                }
+            }
         }
 
-        public void Atualizar(TEntity obj)
+        public TEntity ObterPadrao(Guid id)
         {
-            Db.Entry(obj).State = EntityState.Modified;
-            Db.SaveChanges();
+            TEntity retorno = null;
+
+            using (ISession session = GuiaDaPescaContext.AbrirSessao())
+            {
+                try
+                {
+                    retorno = session.Get<TEntity>(id);
+                }
+                catch (Exception ex)
+                {
+                    TratarException.NHibernateException(ex);
+                }
+            }
+
+            return retorno;
         }
 
-        public void Remover(TEntity obj)
+        public List<TEntity> BuscarPadrao()
         {
-            Db.Set<TEntity>().Remove(obj);
-            Db.SaveChanges();
+            List<TEntity> retorno = null;
+
+            using (ISession session = GuiaDaPescaContext.AbrirSessao())
+            {
+                try
+                {
+                    retorno = session.Query<TEntity>().ToList();
+                }
+                catch (Exception ex)
+                {
+                    TratarException.NHibernateException(ex);
+                }
+            }
+
+            return retorno;
         }
 
         public void Dispose()

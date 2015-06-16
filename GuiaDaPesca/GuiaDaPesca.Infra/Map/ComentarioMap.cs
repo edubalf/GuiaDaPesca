@@ -1,20 +1,36 @@
-﻿using GuiaDaPesca.Domain.Model;
-using System.Data.Entity.ModelConfiguration;
+﻿using FluentNHibernate.Mapping;
+using GuiaDaPesca.Domain.Model;
 
 namespace GuiaDaPesca.Infra.Map
 {
-    public class ComentarioMap : EntityTypeConfiguration<Comentario>
+    public class ComentarioMap : ClassMap<Comentario>
     {
         public ComentarioMap()
         {
-            Property(x => x.Descricao)
-                .HasMaxLength(1000)
-                .IsRequired();
+            Id(x => x.Id)
+                .GeneratedBy.GuidComb();
 
-            Property(x => x.DataCriacao)
-                .IsRequired();
+            Map(x => x.Descricao)
+                .Not.Nullable()
+                .Length(1000);
 
-            HasRequired(x => x.Usuario);
+            Map(x => x.DataCriacao)
+                .Not.Nullable();
+
+            References(x => x.Usuario)
+                .Not.Nullable();
+
+            HasManyToMany(x => x.Peixes)
+                .LazyLoad();
+
+            HasMany(x => x.RelatosDePesca)
+                .LazyLoad();
+
+            HasMany(x => x.TiposLocalDePesca)
+                .LazyLoad();
+
+            HasManyToMany(x => x.LocaisDePesca)
+                .LazyLoad();
         }
     }
 }

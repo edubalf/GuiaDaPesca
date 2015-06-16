@@ -1,18 +1,20 @@
-﻿using GuiaDaPesca.Domain.Model;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentNHibernate.Mapping;
+using GuiaDaPesca.Domain.Model;
 
 namespace GuiaDaPesca.Infra.Map
 {
-    public class TipoLocalDePescaMap : EntityTypeConfiguration<TipoLocalDePesca>
+    public class TipoLocalDePescaMap : ClassMap<TipoLocalDePesca>
     {
         public TipoLocalDePescaMap()
         {
-            HasRequired(x => x.Comentario);
+            Id(x => x.Id)
+                .GeneratedBy.GuidComb();
+
+            References(x => x.Comentario)
+                .Not.Nullable();
+
+            HasMany(x => x.LocaisDePesca)
+                .LazyLoad();
         }
     }
 }
