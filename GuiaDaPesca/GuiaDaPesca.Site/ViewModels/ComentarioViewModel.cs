@@ -9,7 +9,7 @@ namespace GuiaDaPesca.Site.ViewModels
         public Guid Id { get; set; }
         public string Descricao { get; set; }
         public DateTime DataCriacao { get; set; }
-        public virtual UsuarioViewModel Usuario { get; set; }
+        public UsuarioViewModel Usuario { get; set; }
 
         #endregion
     }

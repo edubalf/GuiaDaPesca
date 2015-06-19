@@ -21,8 +21,11 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Novo local de pesca", "About", "Home")</li>
-                <li>@Html.ActionLink("Peixe", "Contact", "Home")</li>
+                @if (usuario != null)
+                {
+                    <li>@Html.ActionLink("Novo local de pesca", "Novo", "LocalDePesca")</li>
+                    <li>@Html.ActionLink("Peixe", "Contact", "Home")</li>
+                }
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @{

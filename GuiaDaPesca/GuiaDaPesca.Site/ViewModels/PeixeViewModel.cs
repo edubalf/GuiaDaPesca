@@ -7,9 +7,9 @@ namespace GuiaDaPesca.Site.ViewModels
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
-        public string Nome { get; private set; }
-        public virtual List<ComentarioViewModel> comentarios { get; private set; }
+        public Guid Id { get; set; }
+        public string Nome { get; set; }
+        public List<ComentarioViewModel> Comentarios { get; set; }
 
         #endregion
     }

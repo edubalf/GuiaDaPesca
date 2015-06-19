@@ -16,11 +16,9 @@ namespace GuiaDaPesca.Infra.Map
             Map(x => x.Tamanho)
                 .Nullable();
 
-            References(x => x.Peixe)
-                .LazyLoad();
+            References(x => x.Peixe);
 
-            HasManyToMany(x => x.RelatosDePesca)
-                .LazyLoad();
+            HasManyToMany(x => x.RelatosDePesca);
         }
     }
 }

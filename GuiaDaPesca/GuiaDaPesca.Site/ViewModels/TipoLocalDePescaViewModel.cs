@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace GuiaDaPesca.Site.ViewModels
 {
@@ -6,8 +7,10 @@ namespace GuiaDaPesca.Site.ViewModels
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
-        public ComentarioViewModel Comentario { get; private set; }
+        [Required(ErrorMessage = "O tipo é obrigatório.")]
+        public Guid Id { get; set; }
+
+        public ComentarioViewModel Comentario { get; set; }
 
         #endregion
     }

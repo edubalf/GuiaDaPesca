@@ -179,6 +179,7 @@
     <Content Include="Views\Login\Novo.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\LocalDePesca\Novo.cshtml" />
+    <Content Include="Views\Shared\_Alerta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

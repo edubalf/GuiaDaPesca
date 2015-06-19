@@ -13,8 +13,7 @@ namespace GuiaDaPesca.Infra.Map
             References(x => x.Comentario)
                 .Not.Nullable();
 
-            HasMany(x => x.LocaisDePesca)
-                .LazyLoad();
+            HasMany(x => x.LocaisDePesca);
         }
     }
 }

@@ -52,7 +52,7 @@ namespace GuiaDaPesca.Domain.Model
         public static void ValidarEmail(string email)
         {
             Assertion.NotEmpty(email, "O email é obrigatório.");
-            Assertion.Length(email, 6, 20, "O login deve ter de 5 à 20 caracteres.");
+            Assertion.Length(email, 100 , "O login deve ter de 5 à 20 caracteres.");
         }
 
         private void ValidarSenha(string senha, string senhaConfirmacao)

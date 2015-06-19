@@ -8,10 +8,10 @@ namespace GuiaDaPesca.Site.ViewModels
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
-        public DateTime Data { get; private set; }
-        public virtual ComentarioViewModel Comentario { get; private set; }
-        public virtual List<PeixeCapturadoViewModel> PeixesCapturados { get; private set; } = new List<PeixeCapturadoViewModel>();
+        public Guid Id { get; set; }
+        public DateTime Data { get; set; }
+        public ComentarioViewModel Comentario { get; set; }
+        public List<PeixeCapturadoViewModel> PeixesCapturados { get; set; }
 
         #endregion
     }

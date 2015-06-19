@@ -14,11 +14,9 @@ namespace GuiaDaPesca.Infra.Map
                 .Not.Nullable()
                 .Length(150);
 
-            HasManyToMany(x => x.Comentarios)
-                .LazyLoad();
+            HasManyToMany(x => x.Comentarios);
 
-            HasMany(x => x.PeixesCapturados)
-                .LazyLoad();
+            HasMany(x => x.PeixesCapturados);
         }
     }
 }

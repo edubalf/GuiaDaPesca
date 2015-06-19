@@ -9,13 +9,13 @@ namespace GuiaDaPesca.Site.ViewModels
 
         public Guid Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O Email é obrigatório")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "A Senha é obrigatório")]
         public string Senha { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "A confirmação da senha é obrigatório")]
         [Display(Name = "Confirmação")]
         public string SenhaConfirmacao { get; set; }
 

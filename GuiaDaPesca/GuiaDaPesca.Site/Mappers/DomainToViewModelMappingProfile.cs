@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GuiaDaPesca.Domain.Model;
 using GuiaDaPesca.Site.ViewModels;
+using System.Collections.Generic;
 
 namespace GuiaDaPesca.Site.Mappers
 {
@@ -21,6 +22,8 @@ namespace GuiaDaPesca.Site.Mappers
             Mapper.CreateMap<RelatoDePesca, RelatoDePescaViewModel>();
             Mapper.CreateMap<TipoLocalDePesca, TipoLocalDePescaViewModel>();
             Mapper.CreateMap<Usuario, UsuarioViewModel>();
+
+            Mapper.CreateMap<List<TipoLocalDePesca>, List<TipoLocalDePescaViewModel>>();
         }
     }
 }

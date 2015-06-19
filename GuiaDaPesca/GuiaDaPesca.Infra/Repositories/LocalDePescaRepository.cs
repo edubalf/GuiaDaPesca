@@ -3,7 +3,7 @@ using GuiaDaPesca.Infra.Repositories;
 
 namespace GuiaDaPesca.Domain.Interfaces.Repositories
 {
-    public class LocalDePescaContext : RepositoryBase<LocalDePesca>, ILocalDePescaContext
+    public class LocalDePescaRepository : RepositoryBase<LocalDePesca>, ILocalDePescaContext
     {
     }
 }

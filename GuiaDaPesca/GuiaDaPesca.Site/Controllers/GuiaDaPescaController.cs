@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using GuiaDaPesca.Infra.Context;
+using System.Web.Mvc;
 
 namespace GuiaDaPesca.Site.Controllers
 {
@@ -7,6 +8,8 @@ namespace GuiaDaPesca.Site.Controllers
         // GET: GuiaDaPesca
         public ActionResult Index()
         {
+            //new Inicializar().IniciarDB();
+
             return View();
         }
     }

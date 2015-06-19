@@ -1,0 +1,12 @@
+﻿@if (ViewBag.Mensagem != null)
+{
+    string mensagemClass = "alert-danger";
+    if (ViewBag.MensagemTipo != null)
+    {
+        mensagemClass = ViewBag.MensagemTipo;
+    }
+
+    <div class="alert @mensagemClass">
+        @ViewBag.Mensagem
+    </div>
+}

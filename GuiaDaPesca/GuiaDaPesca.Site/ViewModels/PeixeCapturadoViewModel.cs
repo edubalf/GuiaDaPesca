@@ -6,10 +6,10 @@ namespace GuiaDaPesca.Site.ViewModels
     {
         #region Propriets
 
-        public Guid Id { get; private set; }
-        public double Peso { get; private set; }
-        public double Tamanho { get; private set; }
-        public virtual PeixeViewModel Peixe { get; private set; }
+        public Guid Id { get; set; }
+        public double Peso { get; set; }
+        public double Tamanho { get; set; }
+        public PeixeViewModel Peixe { get; set; }
 
         #endregion
     }

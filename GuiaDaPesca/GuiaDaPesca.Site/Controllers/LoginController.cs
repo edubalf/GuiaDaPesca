@@ -79,7 +79,7 @@ namespace GuiaDaPesca.Site.Controllers
 
             if (usuario == null)
             {
-                ViewBag.Mensagem = "Usuario não localizado;";
+                ViewBag.Mensagem = "Usuario não localizado.";
             }
             else
             {
@@ -91,6 +91,10 @@ namespace GuiaDaPesca.Site.Controllers
                     cookie.Expires = new DateTime(DateTime.Now.Year + 10, 1, 1);
 
                     Response.Cookies.Add(cookie);
+                }
+                else
+                {
+                    ViewBag.Mensagem = "A senha não pertence a esse usuario";
                 }
             }
 
