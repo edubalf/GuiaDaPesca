@@ -49,9 +49,10 @@ namespace GuiaDaPesca.Domain.Model
         /// </summary>
         public virtual void RemoverComentario(Comentario comentario)
         {
-            ValidarComentario(comentario);
-            Assertion.NotNull(ObterComentario(comentario), "O comentario não existe.");
-            Comentarios.Remove(ObterComentario(comentario));
+            Comentario removerComentario = ObterComentario(comentario);
+            ValidarComentario(removerComentario);
+            Assertion.NotNull(removerComentario, "O comentario não existe.");
+            Comentarios.Remove(removerComentario);
         }
 
         #endregion
