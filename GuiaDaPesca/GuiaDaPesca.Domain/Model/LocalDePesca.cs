@@ -15,8 +15,8 @@ namespace GuiaDaPesca.Domain.Model
         public virtual Localizacao Localizacao { get; protected set; }
         public virtual Usuario UsuarioCadastro { get; protected set; }
         public virtual TipoLocalDePesca TipoLocalDePesca { get; protected set; }
-        public virtual IList<Comentario> Comentarios { get; protected set; } = new List<Comentario>();
-        public virtual IList<Peixe> Peixes { get; set; } = new List<Peixe>();
+        public virtual IList<Comentario> Comentario { get; protected set; } = new List<Comentario>();
+        public virtual IList<Peixe> Peixe { get; protected set; } = new List<Peixe>();
 
         #endregion
 
@@ -51,7 +51,7 @@ namespace GuiaDaPesca.Domain.Model
             ValidarComentario(comentario);
             Assertion.True(ObterComentario(comentario) == null, "O comentario já foi adicionado.");
 
-            Comentarios.Add(comentario);
+            Comentario.Add(comentario);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace GuiaDaPesca.Domain.Model
             comentarioRemover = ObterComentario(comentario);
             Assertion.True(comentarioRemover != null, "O comentario não pertence a esse local de pesca.");
 
-            Comentarios.Remove(comentarioRemover);
+            Comentario.Remove(comentarioRemover);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace GuiaDaPesca.Domain.Model
             ValidarPeixe(peixe);
             Assertion.True(ObterPeixe(peixe) == null, "O peixe já foi adicionado.");
 
-            Peixes.Add(peixe);
+            Peixe.Add(peixe);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace GuiaDaPesca.Domain.Model
             peixeRemover = ObterPeixe(peixe);
             Assertion.True(peixeRemover != null, "O peixe não pertence a esse local de pesca.");
 
-            Peixes.Remove(peixeRemover);
+            Peixe.Remove(peixeRemover);
         }
 
         /// <summary>
@@ -140,12 +140,12 @@ namespace GuiaDaPesca.Domain.Model
 
         private Comentario ObterComentario(Comentario comentario)
         {
-            return Comentarios.Where(x => x.Id == comentario.Id).FirstOrDefault();
+            return Comentario.Where(x => x.Id == comentario.Id).FirstOrDefault();
         }
 
         private Peixe ObterPeixe(Peixe peixe)
         {
-            return Peixes.Where(x => x.Id == peixe.Id).FirstOrDefault();
+            return Peixe.Where(x => x.Id == peixe.Id).FirstOrDefault();
         }
 
         #endregion

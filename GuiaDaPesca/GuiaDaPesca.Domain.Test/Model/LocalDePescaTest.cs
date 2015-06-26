@@ -46,8 +46,8 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             localDePesca.AdicionarComentario(comentario);
 
-            Assert.AreEqual(localDePesca.Comentarios.Count, 1);
-            Assert.AreEqual(localDePesca.Comentarios.First(), comentario);
+            Assert.AreEqual(localDePesca.Comentario.Count, 1);
+            Assert.AreEqual(localDePesca.Comentario.First(), comentario);
         }
 
         [TestMethod]
@@ -55,11 +55,11 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             localDePesca.AdicionarComentario(comentario);
 
-            Assert.AreEqual(localDePesca.Comentarios.Count, 1);
+            Assert.AreEqual(localDePesca.Comentario.Count, 1);
 
             localDePesca.RemoverComentario(comentario);
 
-            Assert.AreEqual(localDePesca.Comentarios.Count, 0);
+            Assert.AreEqual(localDePesca.Comentario.Count, 0);
         }
 
         [TestMethod]
@@ -67,8 +67,8 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             localDePesca.AdicionarPeixe(peixe);
 
-            Assert.AreEqual(localDePesca.Peixes.Count, 1);
-            Assert.AreEqual(localDePesca.Peixes.First(), peixe);
+            Assert.AreEqual(localDePesca.Peixe.Count, 1);
+            Assert.AreEqual(localDePesca.Peixe.First(), peixe);
         }
 
         [TestMethod]
@@ -76,11 +76,11 @@ namespace GuiaDaPesca.Domain.Test.Model
         {
             localDePesca.AdicionarPeixe(peixe);
 
-            Assert.AreEqual(localDePesca.Peixes.Count, 1);
+            Assert.AreEqual(localDePesca.Peixe.Count, 1);
 
             localDePesca.RemoverPeixe(peixe);
 
-            Assert.AreEqual(localDePesca.Peixes.Count, 0);
+            Assert.AreEqual(localDePesca.Peixe.Count, 0);
         }
 
         [TestMethod]

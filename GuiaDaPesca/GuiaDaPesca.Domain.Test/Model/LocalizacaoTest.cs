@@ -11,13 +11,13 @@ namespace GuiaDaPesca.Domain.Test.Model
         [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void LatLongInvalida()
         {
-            Localizacao localizacao = new Localizacao(0, 0);
+            var localizacao = new Localizacao(0, 0);
         }
 
         [TestMethod]
         public void LatLongValido()
         {
-            Localizacao localizacao = new Localizacao(-23.488193, -46.607975);
+            var localizacao = new Localizacao(-23.488193, -46.607975);
         }
     }
 }

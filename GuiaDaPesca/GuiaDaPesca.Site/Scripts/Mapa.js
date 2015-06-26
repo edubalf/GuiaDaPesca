@@ -58,8 +58,7 @@ function IncluirMarker(localDePesca)
 
     var texto = '<strong>Nome:</strong> ' + localDePesca.Nome + '<br>' +
                 '<strong>Tipo:</strong> ' + localDePesca.TipoLocalDePesca.Comentario.Descricao + '<br>' +
-                '<a href="#" onclick="AbrirPopup(\'' + localDePesca.Id + '\', \'liComentario\');">' + localDePesca.Comentarios.length + ' Comentarios</a>' +
-                '<span> / </span><a href="#"  onclick="AbrirPopup(\'' + localDePesca.Id + '\',\'liRelato\');">' + localDePesca.RelatosDePesca.length + ' Relatos de pesca</a><br>';
+                '<a href="#" onclick="AbrirPopup(\'' + localDePesca.Id + '\', \'liComentario\');">' + localDePesca.Comentarios.length + ' Comentarios</a>';
 
     var infowindow = new google.maps.InfoWindow({
         content: texto

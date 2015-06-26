@@ -183,7 +183,6 @@
     <Content Include="Views\LocalDePesca\Novo.cshtml" />
     <Content Include="Views\Shared\_Alerta.cshtml" />
     <Content Include="Views\GuiaDaPesca\_NovoComentario.cshtml" />
-    <Content Include="Views\GuiaDaPesca\_NovoRelatoDePesca.cshtml" />
     <Content Include="Views\Peixe\Index.cshtml" />
     <Content Include="Views\Peixe\Novo.cshtml" />
   </ItemGroup>

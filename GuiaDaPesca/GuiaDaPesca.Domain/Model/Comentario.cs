@@ -13,8 +13,8 @@ namespace GuiaDaPesca.Domain.Model
         public virtual DateTime DataCriacao { get; protected set; }
         public virtual Usuario Usuario { get; protected set; }
 
-        public virtual IList<Peixe> Peixes { get; protected set; }
-        public virtual IList<LocalDePesca> LocaisDePesca { get; protected set; }
+        public virtual IList<Peixe> Peixe { get; protected set; } = new List<Peixe>();
+        public virtual IList<LocalDePesca> LocalDePesca { get; protected set; } = new List<LocalDePesca>();
 
         #endregion
 

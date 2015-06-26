@@ -11,9 +11,9 @@ namespace GuiaDaPesca.Domain.Model
 
         public virtual Guid Id { get; protected set; }
         public virtual string Nome { get; protected set; }
-        public virtual IList<Comentario> Comentarios { get; protected set; } = new List<Comentario>();
+        public virtual IList<Comentario> Comentario { get; protected set; } = new List<Comentario>();
 
-        public virtual IList<LocalDePesca> LocaisDePesca { get; set; }
+        public virtual IList<LocalDePesca> LocalDePesca { get; protected set; } = new List<LocalDePesca>();
 
         #endregion
 
@@ -26,7 +26,7 @@ namespace GuiaDaPesca.Domain.Model
             ValidarNome(nome);
 
             Nome = nome;
-            Comentarios = new List<Comentario>();
+            Comentario = new List<Comentario>();
         }
 
         #endregion
@@ -41,7 +41,7 @@ namespace GuiaDaPesca.Domain.Model
             ValidarComentario(comentario);
             Assertion.Null(ObterComentario(comentario), "O comentario já existe.");
 
-            Comentarios.Add(comentario);
+            Comentario.Add(comentario);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace GuiaDaPesca.Domain.Model
             comentarioRemover = ObterComentario(comentario);
             Assertion.NotNull(comentarioRemover, "O comentario não existe.");
 
-            Comentarios.Remove(ObterComentario(comentario));
+            Comentario.Remove(ObterComentario(comentario));
         }
 
         #endregion
@@ -75,7 +75,7 @@ namespace GuiaDaPesca.Domain.Model
 
         private Comentario ObterComentario(Comentario comentario)
         {
-            return Comentarios.Where(x => x.Id == comentario.Id).FirstOrDefault();
+            return Comentario.Where(x => x.Id == comentario.Id).FirstOrDefault();
         }
 
         #endregion
