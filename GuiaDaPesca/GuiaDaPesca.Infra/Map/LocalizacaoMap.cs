@@ -15,8 +15,6 @@ namespace GuiaDaPesca.Infra.Map
 
             Map(x => x.Longitude)
                 .Not.Nullable();
-
-            References(x => x.LocalDePesca);
         }
     }
 }

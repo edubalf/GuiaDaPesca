@@ -25,8 +25,7 @@ namespace GuiaDaPesca.Site.ViewModels
         [Display(Name = "Tipo")]
         public TipoLocalDePescaViewModel TipoLocalDePesca { get; set; }
 
-        public List<ComentarioViewModel> Comentarios { get; set; }
-        public List<RelatoDePescaViewModel> RelatosDePesca { get; set; }
+        public List<ComentarioViewModel> Comentarios { get; set; } = new List<ComentarioViewModel>();
 
         #endregion
     }

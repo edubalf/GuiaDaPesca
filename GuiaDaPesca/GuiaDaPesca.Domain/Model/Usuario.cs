@@ -12,9 +12,6 @@ namespace GuiaDaPesca.Domain.Model
         public virtual string Email { get; protected set; }
         public virtual string Senha { get; protected set; }
 
-        public virtual IList<Comentario> Comentarios { get; protected set; }
-        public virtual IList<LocalDePesca> LocalisDePesca { get; protected set; }
-
         #endregion
 
         #region Constructor
@@ -52,7 +49,7 @@ namespace GuiaDaPesca.Domain.Model
         public static void ValidarEmail(string email)
         {
             Assertion.NotEmpty(email, "O email é obrigatório.");
-            Assertion.Length(email, 100 , "O login deve ter de 5 à 20 caracteres.");
+            Assertion.Length(email, 5, 100 , "O login deve ter de 5 à 100 caracteres.");
         }
 
         private void ValidarSenha(string senha, string senhaConfirmacao)

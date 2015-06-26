@@ -18,17 +18,22 @@ namespace GuiaDaPesca.Infra.Map
                 .Length(100);
 
             References(x => x.Localizacao)
-                .Not.Nullable();
+                .Not.Nullable()
+                .Not.LazyLoad();
 
             References(x => x.UsuarioCadastro)
-                .Not.Nullable();
+                .Not.Nullable()
+                .Not.LazyLoad(); 
 
             References(x => x.TipoLocalDePesca)
-                .Not.Nullable();
+                .Not.Nullable()
+                .Not.LazyLoad();
 
-            HasManyToMany(x => x.Comentarios);
+            HasManyToMany(x => x.Comentarios)
+                .Not.LazyLoad();
 
-            HasManyToMany(x => x.RelatosDePesca);
+            HasManyToMany(x => x.Peixes)
+                .Not.LazyLoad();
         }
     }
 }

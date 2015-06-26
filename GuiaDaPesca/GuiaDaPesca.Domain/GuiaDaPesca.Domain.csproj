@@ -41,10 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\Repositories\IPeixeCapturadoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IUsuarioRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITipoLocalDePescaRepository.cs" />
-    <Compile Include="Interfaces\Repositories\IRelatoDePescaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPeixeRepository.cs" />
     <Compile Include="Interfaces\Repositories\ILocalizacaoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IComentarioRepository.cs" />
@@ -55,8 +53,6 @@
     <Compile Include="Model\LocalDePesca.cs" />
     <Compile Include="Model\Localizacao.cs" />
     <Compile Include="Model\Peixe.cs" />
-    <Compile Include="Model\PeixeCapturado.cs" />
-    <Compile Include="Model\RelatoDePesca.cs" />
     <Compile Include="Model\TipoLocalDePesca.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

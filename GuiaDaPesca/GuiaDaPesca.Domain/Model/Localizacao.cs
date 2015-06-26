@@ -12,7 +12,6 @@ namespace GuiaDaPesca.Domain.Model
         public virtual double Latitude { get; protected set; }
         public virtual double Longitude { get; protected set; }
 
-        public virtual LocalDePesca LocalDePesca { get; protected set; }
         #endregion
 
         #region Constructor

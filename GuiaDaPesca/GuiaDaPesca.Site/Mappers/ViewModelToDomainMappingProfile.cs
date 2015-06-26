@@ -19,11 +19,10 @@ namespace GuiaDaPesca.Site.Mappers
             Mapper.CreateMap<ComentarioViewModel, Comentario>();
             Mapper.CreateMap<LocalDePescaViewModel, LocalDePesca>();
             Mapper.CreateMap<LocalizacaoViewModel, Localizacao>();
-            Mapper.CreateMap<PeixeCapturadoViewModel, PeixeCapturado>();
             Mapper.CreateMap<PeixeViewModel, Peixe>();
-            Mapper.CreateMap<RelatoDePescaViewModel, RelatoDePesca>();
             Mapper.CreateMap<TipoLocalDePescaViewModel, TipoLocalDePesca>();
-            Mapper.CreateMap<UsuarioViewModel, Usuario>();
+            Mapper.CreateMap<UsuarioViewModel, Usuario>()
+                .ConstructUsing(s => new Usuario(s.Email, s.Senha, s.Senha));
         }
     }
 }

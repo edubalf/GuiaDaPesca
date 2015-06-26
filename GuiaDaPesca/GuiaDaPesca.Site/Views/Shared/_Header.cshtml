@@ -17,14 +17,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Guia da pesca", "Index", "GuiaDaPesca", new { @class = "navbar-brand" })
+            <a href='@Url.Action("Index","GuiaDaPesca")' class="navbar-brand">Guia da pesca</a>
+            
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 @if (usuario != null)
                 {
                     <li>@Html.ActionLink("Novo local de pesca", "Novo", "LocalDePesca")</li>
-                    <li>@Html.ActionLink("Peixe", "Contact", "Home")</li>
                 }
             </ul>
             <ul class="nav navbar-nav navbar-right">

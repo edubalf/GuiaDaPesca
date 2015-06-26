@@ -18,6 +18,7 @@ namespace GuiaDaPesca.Site.Controllers
             List<TipoLocalDePesca> tiposLocalDePesca = new TipoLocalDePescaRepository().Buscar();
 
             ModelToViewModel(tiposLocalDePesca, tiposLocalDePescaViewModel);
+            //tiposLocalDePescaViewModel = Mapper.Map<List<TipoLocalDePescaViewModel>>(tiposLocalDePesca);
 
             foreach (var item in tiposLocalDePescaViewModel)
             {
@@ -31,28 +32,6 @@ namespace GuiaDaPesca.Site.Controllers
             ViewBag.tiposLocalDePescaViewModel = new SelectList(itens, "Value", "Text");
 
             return View();
-        }
-
-        private void ModelToViewModel(List<TipoLocalDePesca> tiposLocalDePesca, List<TipoLocalDePescaViewModel> tiposLocalDePescaViewModel)
-        {
-            tiposLocalDePesca.ForEach(x =>
-                tiposLocalDePescaViewModel.Add(new TipoLocalDePescaViewModel()
-                {
-                    Id = x.Id,
-                    Comentario = new ComentarioViewModel()
-                    {
-                        Id = x.Comentario.Id,
-                        Usuario = new UsuarioViewModel()
-                        {
-                            Id = x.Comentario.Usuario.Id,
-                            Email = x.Comentario.Usuario.Email,
-                            Senha = x.Comentario.Usuario.Senha
-                        },
-                        DataCriacao = x.Comentario.DataCriacao,
-                        Descricao = x.Comentario.Descricao
-                    }
-                })
-            );
         }
 
         [HttpPost]
@@ -92,7 +71,33 @@ namespace GuiaDaPesca.Site.Controllers
                 }
             }
 
-            return View();
+            return RedirectToAction("Novo");
         }
+
+        #region Methods
+
+        private void ModelToViewModel(List<TipoLocalDePesca> tiposLocalDePesca, List<TipoLocalDePescaViewModel> tiposLocalDePescaViewModel)
+        {
+            tiposLocalDePesca.ForEach(x =>
+                tiposLocalDePescaViewModel.Add(new TipoLocalDePescaViewModel()
+                {
+                    Id = x.Id,
+                    Comentario = new ComentarioViewModel()
+                    {
+                        Id = x.Comentario.Id,
+                        Usuario = new UsuarioViewModel()
+                        {
+                            Id = x.Comentario.Usuario.Id,
+                            Email = x.Comentario.Usuario.Email,
+                            Senha = x.Comentario.Usuario.Senha
+                        },
+                        DataCriacao = x.Comentario.DataCriacao,
+                        Descricao = x.Comentario.Descricao
+                    }
+                })
+            );
+        }
+
+        #endregion
     }
 }

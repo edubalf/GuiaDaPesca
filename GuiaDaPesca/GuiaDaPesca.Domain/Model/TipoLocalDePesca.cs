@@ -10,8 +10,6 @@ namespace GuiaDaPesca.Domain.Model
         public virtual Guid Id { get; protected set; }
         public virtual Comentario Comentario { get; protected set; }
 
-        public virtual IList<LocalDePesca> LocaisDePesca { get; protected set; }
-
         #endregion
 
         #region Constructor

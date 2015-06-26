@@ -9,7 +9,7 @@ namespace GuiaDaPesca.Site.ViewModels
 
         public Guid Id { get; set; }
         public string Nome { get; set; }
-        public List<ComentarioViewModel> Comentarios { get; set; }
+        public List<ComentarioViewModel> Comentarios { get; set; } = new List<ComentarioViewModel>();
 
         #endregion
     }

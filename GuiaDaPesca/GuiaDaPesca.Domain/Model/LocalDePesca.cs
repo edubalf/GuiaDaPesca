@@ -15,8 +15,8 @@ namespace GuiaDaPesca.Domain.Model
         public virtual Localizacao Localizacao { get; protected set; }
         public virtual Usuario UsuarioCadastro { get; protected set; }
         public virtual TipoLocalDePesca TipoLocalDePesca { get; protected set; }
-        public virtual List<Comentario> Comentarios { get; protected set; } = new List<Comentario>();
-        public virtual List<RelatoDePesca> RelatosDePesca { get; protected set; } = new List<RelatoDePesca>();
+        public virtual IList<Comentario> Comentarios { get; protected set; } = new List<Comentario>();
+        public virtual IList<Peixe> Peixes { get; set; } = new List<Peixe>();
 
         #endregion
 
@@ -69,28 +69,28 @@ namespace GuiaDaPesca.Domain.Model
         }
 
         /// <summary>
-        /// Adiciona um relato de pesca
+        /// Adiciona um comentario
         /// </summary>
-        public virtual void AdicionarRelatoDePesca(RelatoDePesca relatoDePesca)
+        public virtual void AdicionarPeixe(Peixe peixe)
         {
-            ValidarRelatoDePesca(relatoDePesca);
-            Assertion.True(ObterRelatoDePesca(relatoDePesca) == null, "O relator de pesca já foi adicionado.");
+            ValidarPeixe(peixe);
+            Assertion.True(ObterPeixe(peixe) == null, "O peixe já foi adicionado.");
 
-            RelatosDePesca.Add(relatoDePesca);
+            Peixes.Add(peixe);
         }
 
         /// <summary>
-        /// Remove um relato de pesca
+        /// Remove um comentario
         /// </summary>
-        public virtual void RemoverRelatoDePesca(RelatoDePesca relatoDePesca)
+        public virtual void RemoverPeixe(Peixe peixe)
         {
-            RelatoDePesca relatoDePescaRemover;
+            Peixe peixeRemover;
 
-            ValidarRelatoDePesca(relatoDePesca);
-            relatoDePescaRemover = ObterRelatoDePesca(relatoDePesca);
-            Assertion.True(relatoDePescaRemover != null, "O relato de pesca não pertence a esse local de pesca.");
+            ValidarPeixe(peixe);
+            peixeRemover = ObterPeixe(peixe);
+            Assertion.True(peixeRemover != null, "O peixe não pertence a esse local de pesca.");
 
-            RelatosDePesca.Remove(relatoDePescaRemover);
+            Peixes.Remove(peixeRemover);
         }
 
         /// <summary>
@@ -133,9 +133,9 @@ namespace GuiaDaPesca.Domain.Model
             Assertion.NotNull(comentario, "O comentario é obrigatório.");
         }
 
-        private void ValidarRelatoDePesca(RelatoDePesca relatoDePesca)
+        private void ValidarPeixe(Peixe peixe)
         {
-            Assertion.NotNull(relatoDePesca, "O relato de pesca é obrigatório.");
+            Assertion.NotNull(peixe, "O comentario é obrigatório.");
         }
 
         private Comentario ObterComentario(Comentario comentario)
@@ -143,9 +143,9 @@ namespace GuiaDaPesca.Domain.Model
             return Comentarios.Where(x => x.Id == comentario.Id).FirstOrDefault();
         }
 
-        private RelatoDePesca ObterRelatoDePesca(RelatoDePesca relatoDePesca)
+        private Peixe ObterPeixe(Peixe peixe)
         {
-            return RelatosDePesca.Where(x => x.Id == relatoDePesca.Id).FirstOrDefault();
+            return Peixes.Where(x => x.Id == peixe.Id).FirstOrDefault();
         }
 
         #endregion

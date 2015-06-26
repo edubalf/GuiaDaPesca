@@ -18,10 +18,6 @@ namespace GuiaDaPesca.Infra.Map
             Map(x => x.Senha)
                 .Not.Nullable()
                 .Length(100);
-
-            HasMany(x => x.Comentarios);
-
-            HasMany(x => x.LocalisDePesca);
         }
     }
 }

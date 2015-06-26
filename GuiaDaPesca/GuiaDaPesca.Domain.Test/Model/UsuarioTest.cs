@@ -21,7 +21,7 @@ namespace GuiaDaPesca.Domain.Test.Model
         public void LoginPequeno()
         {
             //Menor que 6 caracteres
-            Usuario usuario = new Usuario("eduba", "123mudar", "123mudar");
+            Usuario usuario = new Usuario("edub", "123mudar", "123mudar");
         }
 
         [TestMethod]
@@ -29,7 +29,7 @@ namespace GuiaDaPesca.Domain.Test.Model
         public void LoginGrande()
         {
             //maior que 20 caracteres
-            Usuario usuario = new Usuario("abcdefghijabcdefghija", "123mudar", "123mudar");
+            Usuario usuario = new Usuario("abcdefghijabcdefghijaabcdefghijabcdefghijaabcdefghijabcdefghijaabcdefghijabcdefghijaabcdefghijabcdefghijaabcdefghijabcdefghijaabcdefghijabcdefghija", "123mudar", "123mudar");
         }
 
         [TestMethod]

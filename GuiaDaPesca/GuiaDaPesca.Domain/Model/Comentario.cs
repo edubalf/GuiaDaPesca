@@ -14,8 +14,6 @@ namespace GuiaDaPesca.Domain.Model
         public virtual Usuario Usuario { get; protected set; }
 
         public virtual IList<Peixe> Peixes { get; protected set; }
-        public virtual IList<RelatoDePesca> RelatosDePesca { get; protected set; }
-        public virtual IList<TipoLocalDePesca> TiposLocalDePesca { get; protected set; }
         public virtual IList<LocalDePesca> LocaisDePesca { get; protected set; }
 
         #endregion

@@ -11,9 +11,8 @@ namespace GuiaDaPesca.Infra.Map
                 .GeneratedBy.GuidComb();
 
             References(x => x.Comentario)
-                .Not.Nullable();
-
-            HasMany(x => x.LocaisDePesca);
+                .Not.Nullable()
+                .Not.LazyLoad();
         }
     }
 }

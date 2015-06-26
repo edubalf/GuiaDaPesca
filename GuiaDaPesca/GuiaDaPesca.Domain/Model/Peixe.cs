@@ -11,9 +11,9 @@ namespace GuiaDaPesca.Domain.Model
 
         public virtual Guid Id { get; protected set; }
         public virtual string Nome { get; protected set; }
-        public virtual IList<Comentario> Comentarios { get; protected set; }
+        public virtual IList<Comentario> Comentarios { get; protected set; } = new List<Comentario>();
 
-        public virtual IList<PeixeCapturado> PeixesCapturados { get; protected set; }
+        public virtual IList<LocalDePesca> LocaisDePesca { get; set; }
 
         #endregion
 
